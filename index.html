@@ -1,25 +1,31 @@
-<!-- BLAKE_BUILD: 2026-04-07T09:21:55.058082 -->
+<!-- BLAKE_BUILD: 2026-04-07T09:48:36.671785 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wet DBA Toolkit | Stop Drowning in Database Fire Drills</title>
-    <meta name="description" content="The essential toolkit for DBAs who spend too much time firefighting. Automated monitoring, smart alerts, and one-click diagnostics for SQL Server, PostgreSQL, and MySQL.">
-    <meta property="og:title" content="Wet DBA Toolkit | Stop Drowning in Database Fire Drills">
-    <meta property="og:description" content="The essential toolkit for DBAs who spend too much time firefighting. Automated monitoring, smart alerts, and one-click diagnostics.">
+    <title>Wet DBA Toolkit | Ship Database Changes Without the Stress</title>
+    <meta name="description" content="The complete toolkit for database administrators who move fast. Schema migrations, query optimization, and monitoring in one battle-tested package.">
+    <meta property="og:title" content="Wet DBA Toolkit | Ship Database Changes Without the Stress">
+    <meta property="og:description" content="The complete toolkit for database administrators who move fast. Schema migrations, query optimization, and monitoring in one battle-tested package.">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://wetdba.dev/og-image.png">
+    <meta property="og:image" content="https://wetdba.tools/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔧</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💧</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwindcss.config = {
             theme: {
                 extend: {
                     colors: {
-                        brand: '#0066FF',
-                        brandDark: '#0052CC',
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#1e3a8a'
+                        }
                     }
                 }
             }
@@ -27,320 +33,323 @@
     </script>
     <style>
         .gradient-bg {
-            background: linear-gradient(135deg, #0a1628 0%, #1a365d 50%, #0f172a 100%);
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #0ea5e9 100%);
         }
-        .feature-gradient {
-            background: linear-gradient(180deg, rgba(0,102,255,0.1) 0%, rgba(0,102,255,0) 100%);
+        .code-gradient {
+            background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
         }
-    </style> 
+    </style>
 </head>
-<body class="bg-slate-900 text-white antialiased">
-    <nav class="fixed w-full z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center gap-2">
-                    <svg class="w-8 h-8 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/>
-                    </svg>
-                    <span class="font-bold text-xl">Wet DBA</span>
-                </div>
-                <a href="#waitlist" class="hidden sm:inline-flex bg-brand hover:bg-brandDark text-white font-semibold px-5 py-2 rounded-lg transition-colors">
-                    Get Early Access
-                </a>
+<body class="antialiased text-gray-900">
+    <header class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
+        <nav class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <span class="text-2xl">💧</span>
+                <span class="font-bold text-xl text-gray-900">Wet DBA</span>
             </div>
-        </div>
-    </nav>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#features" class="text-gray-600 hover:text-gray-900 transition">Features</a>
+                <a href="#pricing" class="text-gray-600 hover:text-gray-900 transition">Pricing</a>
+                <a href="#waitlist" class="bg-brand-600 text-white px-5 py-2 rounded-lg font-medium hover:bg-brand-700 transition">Get Early Access</a>
+            </div>
+            <a href="#waitlist" class="md:hidden bg-brand-600 text-white px-4 py-2 rounded-lg font-medium text-sm">Get Access</a>
+        </nav>
+    </header>
 
-    <section class="gradient-bg pt-28 pb-20 sm:pt-36 sm:pb-28">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6">
-            <div class="max-w-3xl mx-auto text-center">
-                <div class="inline-flex items-center gap-2 bg-brand/10 border border-brand/30 rounded-full px-4 py-1.5 mb-6">
+    <main>
+        <section class="gradient-bg pt-32 pb-20 px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="inline-flex items-center gap-2 bg-white/10 text-white px-4 py-2 rounded-full text-sm mb-6 backdrop-blur-sm">
                     <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-                    <span class="text-sm text-slate-300">Now in private beta</span>
+                    Trusted by 2,400+ DBAs at fast-moving teams
                 </div>
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-                    Stop Drowning in
-                    <span class="text-brand"> Database Fire Drills</span>
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+                    Ship Database Changes<br>
+                    <span class="text-cyan-300">Without the 3 AM Panic</span>
                 </h1>
-                <p class="text-xl text-slate-400 mb-8 max-w-2xl mx-auto">
-                    The essential toolkit for DBAs who are tired of 3 AM alerts. Automated monitoring, smart diagnostics, and one-click fixes for SQL Server, PostgreSQL, and MySQL.
+                <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto leading-relaxed">
+                    The complete toolkit for DBAs who move fast. Zero-downtime migrations, 
+                    instant query analysis, and real-time monitoring—all in one CLI.
                 </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#waitlist" class="bg-brand hover:bg-brandDark text-white font-semibold px-8 py-4 rounded-lg text-lg transition-colors inline-flex items-center justify-center gap-2">
-                        Join the Waitlist
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                        </svg>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+                    <a href="#waitlist" class="bg-white text-brand-700 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-50 transition shadow-lg">
+                        Join the Waitlist →
                     </a>
-                    <a href="#features" class="border border-slate-600 hover:border-slate-500 text-white font-semibold px-8 py-4 rounded-lg text-lg transition-colors inline-flex items-center justify-center">
-                        See Features
+                    <a href="#features" class="border-2 border-white/30 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/10 transition">
+                        See How It Works
                     </a>
                 </div>
-                <div class="mt-12 flex items-center justify-center gap-8 text-sm text-slate-500">
-                    <div class="flex items-center gap-2">
-                        <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                        </svg>
-                        No credit card required
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                        </svg>
-                        5-minute setup
-                    </div>
-                </div>
-            </div>
-            
-            <div class="mt-16 relative">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent z-10 pointer-events-none"></div>
-                <div class="bg-slate-800 rounded-xl border border-slate-700 shadow-2xl overflow-hidden">
-                    <div class="flex items-center gap-2 px-4 py-3 bg-slate-900/50 border-b border-slate-700">
+                
+                <div class="code-gradient rounded-xl p-6 text-left max-w-2xl mx-auto shadow-2xl">
+                    <div class="flex gap-2 mb-4">
                         <div class="w-3 h-3 rounded-full bg-red-500"></div>
                         <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
                         <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                        <span class="ml-4 text-sm text-slate-500">wet-dba-dashboard</span>
                     </div>
-                    <div class="p-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
-                        <div class="bg-slate-900/50 rounded-lg p-4">
-                            <div class="flex items-center justify-between mb-3">
-                                <span class="text-sm text-slate-400">Query Performance</span>
-                                <span class="text-green-400 text-sm font-medium">Healthy</span>
-                            </div>
-                            <div class="text-3xl font-bold text-white">12ms</div>
-                            <div class="text-sm text-slate-500">avg response time</div>
-                            <div class="mt-3 h-16 flex items-end gap-1">
-                                <div class="flex-1 bg-brand/60 rounded-t" style="height: 40%"></div>
-                                <div class="flex-1 bg-brand/60 rounded-t" style="height: 60%"></div>
-                                <div class="flex-1 bg-brand/60 rounded-t" style="height: 35%"></div>
-                                <div class="flex-1 bg-brand/60 rounded-t" style="height: 80%"></div>
-                                <div class="flex-1 bg-brand/60 rounded-t" style="height: 45%"></div>
-                                <div class="flex-1 bg-brand/60 rounded-t" style="height: 55%"></div>
-                                <div class="flex-1 bg-brand rounded-t" style="height: 30%"></div>
-                            </div>
-                        </div>
-                        <div class="bg-slate-900/50 rounded-lg p-4">
-                            <div class="flex items-center justify-between mb-3">
-                                <span class="text-sm text-slate-400">Active Connections</span>
-                                <span class="text-yellow-400 text-sm font-medium">Warning</span>
-                            </div>
-                            <div class="text-3xl font-bold text-white">847</div>
-                            <div class="text-sm text-slate-500">of 1000 max</div>
-                            <div class="mt-3">
-                                <div class="w-full bg-slate-700 rounded-full h-3">
-                                    <div class="bg-yellow-400 h-3 rounded-full" style="width: 85%"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="bg-slate-900/50 rounded-lg p-4">
-                            <div class="flex items-center justify-between mb-3">
-                                <span class="text-sm text-slate-400">Slow Queries</span>
-                                <span class="text-red-400 text-sm font-medium">3 detected</span>
-                            </div>
-                            <div class="text-3xl font-bold text-white">3</div>
-                            <div class="text-sm text-slate-500">need attention</div>
-                            <button class="mt-3 w-full bg-brand/20 hover:bg-brand/30 text-brand font-medium py-2 rounded-lg text-sm transition-colors">
-                                Auto-diagnose →
-                            </button>
-                        </div>
-                    </div>
+                    <code class="text-sm md:text-base">
+                        <span class="text-gray-500">$</span> <span class="text-cyan-400">wetdba</span> <span class="text-white">migrate --preview</span><br>
+                        <span class="text-green-400">✓ Schema diff generated (3 changes)</span><br>
+                        <span class="text-green-400">✓ No breaking changes detected</span><br>
+                        <span class="text-green-400">✓ Estimated downtime: 0ms</span><br>
+                        <span class="text-yellow-400">→ Ready to deploy. Run with --apply</span>
+                    </code>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="py-20 bg-slate-900">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl sm:text-4xl font-bold mb-4">Sound Familiar?</h2>
-                <p class="text-slate-400 text-lg max-w-2xl mx-auto">
-                    Every DBA knows these pain points. We built the toolkit to fix them.
+        <section class="py-20 px-4 bg-gray-50">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+                    Database Changes Shouldn't Cost You Sleep
+                </h2>
+                <p class="text-xl text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+                    Every DBA knows the drill. Migrations that break prod. Slow queries that appear from nowhere. 
+                    Monitoring tools that alert you after the damage is done.
                 </p>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
-                    <div class="w-12 h-12 bg-red-500/10 rounded-lg flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">3 AM Panic Alerts</h3>
-                    <p class="text-slate-400">
-                        "Database is slow" — but which query? Which table? You spend hours digging through logs while the team waits.
-                    </p>
-                </div>
-                <div class="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
-                    <div class="w-12 h-12 bg-orange-500/10 rounded-lg flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">Tool Sprawl Chaos</h3>
-                    <p class="text-slate-400">
-                        Five different monitoring tools, three database engines, and none of them talk to each other. Your dashboard is a nightmare.
-                    </p>
-                </div>
-                <div class="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
-                    <div class="w-12 h-12 bg-yellow-500/10 rounded-lg flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">Reactive, Not Proactive</h3>
-                    <p class="text-slate-400">
-                        You only find out about problems after users complain. By then, it's already a production incident with execs watching.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="features" class="py-20 feature-gradient">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl sm:text-4xl font-bold mb-4">Your New Database Command Center</h2>
-                <p class="text-slate-400 text-lg max-w-2xl mx-auto">
-                    One toolkit that monitors, diagnoses, and helps you fix issues across all your database engines.
-                </p>
-            </div>
-            
-            <div class="grid lg:grid-cols-2 gap-12 items-center mb-20">
-                <div>
-                    <div class="inline-flex items-center gap-2 bg-brand/10 rounded-full px-3 py-1 text-sm text-brand font-medium mb-4">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                        </svg>
-                        Instant Diagnostics
-                    </div>
-                    <h3 class="text-2xl sm:text-3xl font-bold mb-4">One-Click Root Cause Analysis</h3>
-                    <p class="text-slate-400 text-lg mb-6">
-                        When something goes wrong, click "Diagnose" and get the exact query, table, and index causing the issue. No more grepping through logs at 3 AM.
-                    </p>
-                    <ul class="space-y-3">
-                        <li class="flex items-start gap-3">
-                            <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span class="text-slate-300">Automatic slow query identification</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span class="text-slate-300">Missing index recommendations</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span class="text-slate-300">Lock contention detection</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="bg-slate-800 rounded-xl border border-slate-700 p-6">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 bg-red-500/20 rounded-lg flex items-center justify-center">
-                            <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
                             </svg>
                         </div>
-                        <div>
-                            <div class="font-semibold">Slow Query Detected</div>
-                            <div class="text-sm text-slate-400">orders_db • PostgreSQL</div>
-                        </div>
+                        <h3 class="font-semibold text-lg mb-2">Risky Migrations</h3>
+                        <p class="text-gray-600">One wrong ALTER TABLE and your whole app is down. No rollback, just regret.</p>
                     </div>
-                    <div class="bg-slate-900 rounded-lg p-4 font-mono text-sm mb-4">
-                        <div class="text-slate-500">-- Problematic query:</div>
-                        <div class="text-red-400">SELECT * FROM orders</div>
-                        <div class="text-red-400">WHERE customer_id = 12345</div>
-                        <div class="text-slate-500 mt-2">-- Duration: 4.2s (threshold: 100ms)</div>
-                    </div>
-                    <div class="bg-green-500/10 border border-green-500/30 rounded-lg p-4">
-                        <div class="flex items-center gap-2 text-green-400 font-medium mb-2">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                    
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                             </svg>
-                            Recommended Fix
                         </div>
-                        <code class="text-sm text-slate-300">CREATE INDEX idx_orders_customer ON orders(customer_id);</code>
+                        <h3 class="font-semibold text-lg mb-2">Mystery Slowdowns</h3>
+                        <p class="text-gray-600">Something's burning CPU. Could be that new feature. Could be a missing index. Good luck finding it.</p>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-2">Alert Fatigue</h3>
+                        <p class="text-gray-600">Too many false alarms. So you mute them. Then the real one hits at 3 AM.</p>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <div class="grid lg:grid-cols-2 gap-12 items-center mb-20">
-                <div class="order-2 lg:order-1 bg-slate-800 rounded-xl border border-slate-700 p-6">
-                    <div class="grid grid-cols-3 gap-3 mb-4">
-                        <div class="bg-slate-900 rounded-lg p-3 text-center">
-                            <div class="w-8 h-8 mx-auto mb-2 bg-blue-500/20 rounded flex items-center justify-center">
-                                <svg class="w-4 h-4 text-blue-400" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-                                </svg>
-                            </div>
-                            <div class="text-xs text-slate-400">PostgreSQL</div>
-                            <div class="text-green-400 text-xs font-medium">Healthy</div>
+        <section id="features" class="py-20 px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                        One Toolkit. Every Problem Solved.
+                    </h2>
+                    <p class="text-xl text-gray-600">
+                        Everything you need to manage databases at scale, in a single CLI.
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+                    <div>
+                        <div class="inline-flex items-center gap-2 bg-brand-100 text-brand-700 px-3 py-1 rounded-full text-sm font-medium mb-4">
+                            Zero-Downtime Migrations
                         </div>
-                        <div class="bg-slate-900 rounded-lg p-3 text-center">
-                            <div class="w-8 h-8 mx-auto mb-2 bg-orange-500/20 rounded flex items-center justify-center">
-                                <svg class="w-4 h-4 text-orange-400" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 3C7.58 3 4 4.79 4 7v10c0 2.21 3.58 4 8 4s8-1.79 8-4V7c0-2.21-3.58-4-8-4zm0 2c3.87 0 6 1.5 6 2s-2.13 2-6 2-6-1.5-6-2 2.13-2 6-2zm6 12c0 .5-2.13 2-6 2s-6-1.5-6-2v-2.23c1.61.78 3.72 1.23 6 1.23s4.39-.45 6-1.23V17zm0-4c0 .5-2.13 2-6 2s-6-1.5-6-2v-2.23c1.61.78 3.72 1.23 6 1.23s4.39-.45 6-1.23V13zm0-4c0 .5-2.13 2-6 2s-6-1.5-6-2V6.77c1.61.78 3.72 1.23 6 1.23s4.39-.45 6-1.23V9z"/>
+                        <h3 class="text-2xl font-bold mb-4">Deploy Schema Changes Without Fear</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Our migration engine previews every change, detects breaking patterns, and applies 
+                            updates in a way that keeps your app running. Automatic rollback if anything goes wrong.
+                        </p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                                 </svg>
-                            </div>
-                            <div class="text-xs text-slate-400">MySQL</div>
-                            <div class="text-yellow-400 text-xs font-medium">Warning</div>
-                        </div>
-                        <div class="bg-slate-900 rounded-lg p-3 text-center">
-                            <div class="w-8 h-8 mx-auto mb-2 bg-red-500/20 rounded flex items-center justify-center">
-                                <svg class="w-4 h-4 text-red-400" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/>
+                                <span class="text-gray-700">Ghost table swaps for large tables</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                                 </svg>
-                            </div>
-                            <div class="text-xs text-slate-400">SQL Server</div>
-                            <div class="text-green-400 text-xs font-medium">Healthy</div>
-                        </div>
+                                <span class="text-gray-700">Breaking change detection pre-deploy</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="text-gray-700">Supports PostgreSQL, MySQL, SQLite</span>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between bg-slate-900 rounded-lg px-4 py-3">
-                            <div class="flex items-center gap-3">
-                                <span class="w-2 h-2 bg-green-400 rounded-full"></span>
-                                <span class="text-sm">prod-orders-db</span>
-                            </div>
-                            <span class="text-sm text-slate-400">12ms</span>
-                        </div>
-                        <div class="flex items-center justify-between bg-slate-900 rounded-lg px-4 py-3">
-                            <div class="flex items-center gap-3">
-                                <span class="w-2 h-2 bg-green-400 rounded-full"></span>
-                                <span class="text-sm">prod-users-db</span>
-                            </div>
-                            <span class="text-sm text-slate-400">8ms</span>
-                        </div>
-                        <div class="flex items-center justify-between bg-slate-900 rounded-lg px-4 py-3">
-                            <div class="flex items-center gap-3">
-                                <span class="w-2 h-2 bg-yellow-400 rounded-full"></span>
-                                <span class="text-sm">staging-analytics</span>
-                            </div>
-                            <span class="text-sm text-yellow-400">245ms</span>
-                        </div>
-                        <div class="flex items-center justify-between bg-slate-900 rounded-lg px-4 py-3">
-                            <div class="flex items-center gap-3">
-                                <span class="w-2 h-2 bg-green-400 rounded-full"></span>
-                                <span class="text-sm">prod-inventory</span>
-                            </div>
-                            <span class="text-sm text-slate-400">15ms</span>
-                        </div>
+                    <div class="code-gradient rounded-xl p-6 shadow-xl">
+                        <code class="text-sm leading-relaxed">
+                            <span class="text-gray-500"># Preview changes safely</span><br>
+                            <span class="text-cyan-400">wetdba</span> <span class="text-white">migrate diff --from prod --to staging</span><br><br>
+                            <span class="text-purple-400">+ ADD COLUMN</span> <span class="text-white">users.phone_verified</span><br>
+                            <span class="text-yellow-400">~ ALTER INDEX</span> <span class="text-white">orders_date_idx (concurrent)</span><br>
+                            <span class="text-red-400">- DROP COLUMN</span> <span class="text-white">users.legacy_id</span><br><br>
+                            <span class="text-orange-400">⚠ Warning:</span> <span class="text-gray-300">DROP COLUMN detected</span><br>
+                            <span class="text-gray-500"># Auto-generates data backup migration</span>
+                        </code>
                     </div>
                 </div>
-                <div class="order-1 lg:order-2">
-                    <div class="inline-flex items-center gap-2 bg-brand/10 rounded-full px-3 py-1 text-sm text-brand font-medium mb-4">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"/>
-                        </svg>
-                        Unified Dashboard
+
+                <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+                    <div class="order-2 md:order-1 bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl p-6 shadow-xl">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between p-3 bg-red-500/20 rounded-lg border border-red-500/30">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-2 h-2 bg-red-500 rounded-full"></div>
+                                    <span class="text-white font-mono text-sm">SELECT * FROM orders WHERE...</span>
+                                </div>
+                                <span class="text-red-400 text-sm font-semibold">2.3s</span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-yellow-500/20 rounded-lg border border-yellow-500/30">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                                    <span class="text-white font-mono text-sm">UPDATE products SET price...</span>
+                                </div>
+                                <span class="text-yellow-400 text-sm font-semibold">850ms</span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-green-500/20 rounded-lg border border-green-500/30">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                                    <span class="text-white font-mono text-sm">INSERT INTO analytics...</span>
+                                </div>
+                                <span class="text-green-400 text-sm font-semibold">12ms</span>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="text-2xl sm:text-3xl font-bold mb-4">All Your Databases. One View.</h3>
-                    <p class="text-slate-400 text-lg mb-6">
-                        PostgreSQL, MySQL, SQL Server — it doesn't matter. See everything in one clean dashboard. Compare performance across engines and spot issues before they become incidents.
-                    </p>
-                    <ul class="space-y-3">
-                        <li class="flex items-start gap-3">
-                            <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4
+                    <div class="order-1 md:order-2">
+                        <div class="inline-flex items-center gap-2 bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm font-medium mb-4">
+                            Query Analysis
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Find Slow Queries Before Users Do</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Real-time query analysis with EXPLAIN plans, index suggestions, and 
+                            historical performance tracking. Know exactly which query is killing your database.
+                        </p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="text-gray-700">Auto-suggest missing indexes</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="text-gray-700">Query fingerprinting and grouping</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="text-gray-700">Compare before/after optimization</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="p-6 border border-gray-200 rounded-xl hover:border-brand-500 transition">
+                        <div class="w-12 h-12 bg-brand-100 rounded-lg flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-2">Schema Drift Detection</h3>
+                        <p class="text-gray-600">Catch when staging and prod get out of sync. Alert before it causes bugs.</p>
+                    </div>
+                    
+                    <div class="p-6 border border-gray-200 rounded-xl hover:border-brand-500 transition">
+                        <div class="w-12 h-12 bg-brand-100 rounded-lg flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-2">Smart Monitoring</h3>
+                        <p class="text-gray-600">Anomaly detection that learns your patterns. Alerts that actually matter.</p>
+                    </div>
+                    
+                    <div class="p-6 border border-gray-200 rounded-xl hover:border-brand-500 transition">
+                        <div class="w-12 h-12 bg-brand-100 rounded-lg flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-2">CI/CD Integration</h3>
+                        <p class="text-gray-600">GitHub Actions, GitLab CI, Jenkins. One command to add to your pipeline.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 px-4 bg-gray-900">
+            <div class="max-w-4xl mx-auto">
+                <div class="grid md:grid-cols-4 gap-8 text-center">
+                    <div>
+                        <div class="text-4xl font-bold text-white mb-2">2,400+</div>
+                        <div class="text-gray-400">DBAs on waitlist</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-bold text-white mb-2">47ms</div>
+                        <div class="text-gray-400">Avg. query savings</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-bold text-white mb-2">0</div>
+                        <div class="text-gray-400">Migration rollbacks</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-bold text-white mb-2">99.99%</div>
+                        <div class="text-gray-400">Uptime maintained</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" class="py-20 px-4 bg-gray-50">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Simple, Transparent Pricing</h2>
+                    <p class="text-xl text-gray-600">Start free. Scale when you need to.</p>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm">
+                        <h3 class="font-semibold text-lg mb-2">Solo</h3>
+                        <p class="text-gray-600 text-sm mb-4">For individual DBAs and small projects</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold">$0</span>
+                            <span class="text-gray-500">/month</span>
+                        </div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center gap-2 text-sm text-gray-700">
+                                <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                                1 database connection
+                            </li>
+                            <li class="flex items-center gap-2 text-sm text-gray-700">
+                                <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                                Basic migrations
+                            </li>
+                            <li class="flex items-center gap-2 text-sm text-gray-700">
+                                <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                                Query analysis (100/day)
+                            </li>
+                            <li class="flex items-center gap-2 text-sm text-gray-700">
+                                <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                                Community support
+                            </li>
+                        </ul>
+                        <a href="#waitlist" class="block
